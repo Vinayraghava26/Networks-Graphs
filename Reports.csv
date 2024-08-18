@@ -1,0 +1,16 @@
+ReportID,ReportName,Description
+1,Blood Test,Complete blood count (CBC)
+2,X-Ray,Chest X-Ray
+3,MRI Scan,MRI of the brain
+4,ECG,Electrocardiogram
+5,CT Scan,CT Scan of the abdomen
+6,Ultrasound,Ultrasound of the abdomen
+7,Liver Function Test,Test for liver function
+8,Kidney Function Test,Test for kidney function
+9,Thyroid Test,Test for thyroid function
+10,Lipid Profile,Test for cholesterol levels
+11,Blood Sugar Test,Test for blood glucose levels
+12,Bone Density Test,Test for bone density
+13,Allergy Test,Test for allergies
+14,Urine Test,Complete urine examination
+15,Cardiac Stress Test,Test for heart stress levels

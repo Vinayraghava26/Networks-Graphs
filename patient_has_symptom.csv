@@ -1,0 +1,11 @@
+PatientID,PatientName,SymptomID,SymptomName
+1,Ravi Kumar,1,Chest Pain
+2,Sita Ram,2,Shortness of Breath
+3,Ankit Mehta,3,Headache
+4,Priya Singh,4,Nausea
+5,Anil Kapoor,5,Fatigue
+6,Rajesh Gupta,1,Chest Pain
+7,Kavita Sharma,2,Shortness of Breath
+8,Manoj Verma,3,Headache
+9,Sneha Reddy,4,Nausea
+10,Ajay Patel,5,Fatigue

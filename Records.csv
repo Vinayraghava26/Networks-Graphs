@@ -1,0 +1,31 @@
+ID,Name,Dosage,Frequency,Notes
+1,Metformin,500mg,Twice a day,Diagnosed with Coronary Artery Disease
+2,Lisinopril,10mg,Once a day,Diagnosed with Chronic Kidney Disease
+3,Albuterol,2.5mg,As needed,Diagnosed with GERD
+4,Paracetamol,500mg,Every 6 hours,Diagnosed with Parkinson's Disease
+5,Aspirin,81mg,Once a day,Diagnosed with Hypertension
+6,Omeprazole,20mg,Once a day,Diagnosed with Diabetes
+7,Levothyroxine,50mcg,Once a day,Diagnosed with IBS
+8,Atorvastatin,40mg,Once a day,Diagnosed with Alzheimer's Disease
+9,Losartan,50mg,Once a day,Diagnosed with Heart Failure
+10,Hydrochlorothiazide,25mg,Once a day,Diagnosed with Stroke
+11,Ibuprofen,200mg,Every 4-6 hours,Diagnosed with Coronary Artery Disease
+12,Amoxicillin,500mg,Every 8 hours,Diagnosed with GERD
+13,Azithromycin,250mg,Once a day,Diagnosed with Chronic Kidney Disease
+14,Clopidogrel,75mg,Once a day,Diagnosed with Hypertension
+15,Furosemide,40mg,Once a day,Diagnosed with Parkinson's Disease
+16,Gabapentin,300mg,Three times a day,Diagnosed with IBS
+17,Glipizide,5mg,Once a day,Diagnosed with Diabetes
+18,Metoprolol,50mg,Twice a day,Diagnosed with Heart Failure
+19,Montelukast,10mg,Once a day,Diagnosed with Stroke
+20,Prednisone,5mg,Once a day,Diagnosed with Alzheimer's Disease
+21,Rosuvastatin,20mg,Once a day,Diagnosed with Hypertension
+22,Simvastatin,20mg,Once a day,Diagnosed with IBS
+23,Tramadol,50mg,Every 4-6 hours,Diagnosed with Diabetes
+24,Warfarin,5mg,Once a day,Diagnosed with Alzheimer's Disease
+25,Zolpidem,10mg,Once a day,Diagnosed with Heart Failure
+26,Cetirizine,10mg,Once a day,Diagnosed with Stroke
+27,Doxycycline,100mg,Twice a day,Diagnosed with Coronary Artery Disease
+28,Famotidine,20mg,Twice a day,Diagnosed with GERD
+29,Fluoxetine,20mg,Once a day,Diagnosed with Parkinson's Disease
+30,Loratadine,10mg,Once a day,Diagnosed with Chronic Kidney Disease

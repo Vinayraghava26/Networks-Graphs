@@ -1,0 +1,1068 @@
+/*Summarise patient id 3 for a doctor*/
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/*Summarise patient id 3 for a doctor*/
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/*Summarise patient id 3 for a doctor*/
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+RETURN d;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+MATCH (p:Patients {ID: 3})-[:HAS_DISEASE]->(d:Diseases)
+OPTIONAL MATCH (d)-[:Has_Symptoms]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)
+OPTIONAL MATCH (p)-[:Follows]->(di:Diet)
+OPTIONAL MATCH (p)-[:Needs]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+MATCH (p:Patients {ID: 3})-[:HAS_DISEASE]->(d:Diseases)
+OPTIONAL MATCH (d)-[:HAS_SYMPTOM]->(s:Symptoms)
+OPTIONAL MATCH (p)-[:HAS_RECORDS]->(r:Records)-[:HAS_MEDICATION]->(m:Medications)
+OPTIONAL MATCH (p)-[:FOLLOWS]->(di:Diets)
+OPTIONAL MATCH (p)-[:NEEDS_REPORT]->(re:Reports)
+RETURN p.Name AS PatientName, 
+       collect(distinct d.Name) AS Diseases, 
+       collect(distinct s.Name) AS Symptoms, 
+       collect(distinct r) AS Records, 
+       collect(distinct m.Name) AS Medications, 
+       collect(distinct di.Name) AS Diets,
+       collect(distinct re.Name) AS Reports;
+
+MATCH ()-[r]->()
+RETURN DISTINCT type(r) AS RelationshipType;
+
+MATCH ()-[r]->()
+RETURN DISTINCT r;
+
+MATCH ()-[r]->()
+RETURN r;
+
+MATCH (n:Document) RETURN n LIMIT 25;
+
+MATCH (n:Document) RETURN n LIMIT 25;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+RETURN d;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have and what reports he should get */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN d.Name AS Possible_Disease, r.ReportName AS Required_Report;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+RETURN d;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor see */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Sees]->(r:Reports)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor, r.ReportName AS Reports_Seen;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+RETURN d, doc, r;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+RETURN d;
+
+/* if a person has chest pain what disease he might have which doctor he should visit and what reports does doctor remmend  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (p)-[:Visits]->(doc:Doctors)-[:Treats]->(d)
+MATCH (doc)-[:Sees]->(r:Reports)<-[:Needs]-(p)
+RETURN d, doc, r;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain and he visits a cardiologist which medication  recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:Treats]->(ds:Diseases)
+MATCH (ds)-[:Related]->(m:Medications)
+RETURN m.Name as Recommended_Medication;
+
+/* if a person has chest pain and he visits a cardiologist which medication and diet he recoomends */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})
+MATCH (p)-[:Visits]->(d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Cardiology"})
+MATCH (d)-[:Prescribes]->(m:Medications)
+MATCH (d)-[:RecommendsDiet]->(diet:Diet)
+RETURN m, diet;
+
+/* if a person has chest pain which doctor to vist */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(:Diseases)-[:SpecializedIn]->(doctor:Doctors)
+RETURN doctor;
+
+/* if a person has stroke which doctor to visit and diet which he recommeneds */
+
+MATCH (p:Patients)-[:Has_disease]->(:Diseases{Name: "Stroke"})-[:SpecializedIn]->(d:Doctors)
+MATCH (p)-[:Follows]->(diet:Diet)<-[:RecommendsDiet]-(d)
+RETURN d, diet;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/* if a person has symptoms of chest pain what reports he should have before visiting to doctor  */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)-[:Requires]->(r:Reports)
+RETURN r.ReportName;
+
+/* seeing a patients records and medication can we know which disease he is having  */
+
+MATCH (:Patients {Name: "Patient's Name"})-[:Has_Records]->(r:Records)-[:Has_Medication]->(m:Medications)-[:Prescribes]->(disease:Diseases)
+RETURN disease;
+
+/* if a patient visits a cardiologist what is the disease that he may have and what diet is recommended */
+
+MATCH (p:Patients)-[:Visits]->(d:Doctors {Specialty: "Cardiologist"})-[:Treats]->(disease:Diseases)
+MATCH (disease)-[:Has_Diet]->(diet:Diet)
+RETURN disease, diet;
+
+/* if chest pain then what is the disease which specialised doctor to be met */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Treats]-(doctor:Doctors)
+RETURN disease.Name, doctor.Name;
+
+/* if chest pain then what is the disease which specialised doctor to be met */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:SpecializedIn]-(doctor:Doctors)
+RETURN disease.Name, doctor.Name, doctor.Specialty;
+
+/* if chest pain then what is the disease which specialised doctor to be met */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:SpecialisedIn]-(doctor:Doctors)
+RETURN disease.Name, doctor.Name, doctor.Specialty;
+
+/* if chest pain then what is the disease which doctor what he prescribes the medication  */
+
+MATCH (s:Symptoms {Name: "Shortness of Breath"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)-[:Prescribes]->(m:Medications)
+RETURN d.Name AS Disease, doc.Name AS Doctor, m.Name AS Medication;
+
+/* if chest pain then what is the disease which doctor what he prescribes the medication  */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)-[:Prescribes]->(m:Medications)
+RETURN d.Name AS Disease, doc.Name AS Doctor, m.Name AS Medication;
+
+/* if chest pain then what is the disease which doctor what he prescribes the medication  */
+
+MATCH (s:Symptoms {Name: "chest pain"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)-[:Prescribes]->(m:Medications)
+RETURN d.Name AS Disease, doc.Name AS Doctor, m.Name AS Medication;
+
+MATCH (d:Diseases)<-[:Treats|SpecializedIn]-(doc:Doctors)
+RETURN d.name AS Disease, collect(doc.name) AS Doctors;
+
+MATCH (d:Diseases)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+RETURN d.name AS Disease, collect(doc.name) AS Doctors;
+
+MATCH (d:Diseases)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+RETURN d.name AS Disease, collect(doc.name) AS Doctors;
+
+MATCH (d:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+RETURN d.name AS Disease;
+
+MATCH (d:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+RETURN d.name AS Disease;
+
+MATCH (d:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+RETURN d.name AS Disease, collect(s.name) AS Symptoms;
+
+MATCH (d:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+RETURN d.name AS Disease, collect(s.name) AS Symptoms;
+
+MATCH (d:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+RETURN d.name AS Disease, collect(s.name) AS Symptoms;
+
+MATCH (d:Diseases)-[:HAS_SYMPTOM]->(s:Symptoms)
+RETURN d.name AS Disease, collect(s.name) AS Symptoms;
+
+MATCH (d:Diseases)-[:HAS_SYMPTOM]->(s:Symptoms)
+RETURN d.name AS Disease, collect(s.name) AS Symptoms;
+
+/* // Find Doctors who treat or specialize in these diseases */
+
+MATCH (d:Doctors)-[:Treats|SpecializedIn]->(disease:Diseases)
+WHERE disease.Name IN ['Disease1', 'Disease2', 'Disease3']
+RETURN d;
+
+/* // Find Diseases based on patient's symptoms */
+
+MATCH (p:Patients)-[:Has_disease]->(:Diseases)<-[:SpecialisedIn]-(d:Doctors)
+WHERE p.ID = {patient_id}
+RETURN d.Name as Doctor_Name, d.Specialty as Doctor_Specialty, COLLECT(DISTINCT d.Hospital) as Hospitals_Treated_At, COLLECT(DISTINCT d.Location) as Locations_Treated_At;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+:param patient_id => 3;
+
+// Find Diseases based on patient's symptoms
+MATCH (p:Patients {id: $patient_id})-[:HAS_SYMPTOM]->(s:Symptoms)<-[:HAS_SYMPTOM]-(d:Diseases)
+WITH p, d
+
+// Find Doctors who treat or specialize in these diseases
+MATCH (d)<-[:TREATS|SPECIALIZES_IN]-(doc:Doctors)
+WITH p, d, doc
+
+// Find Medications the patient is taking
+MATCH (p)-[:HAS_RECORD]->(r:Records)-[:INCLUDES_MEDICATION]->(m:Medications)
+WITH p, d, doc, m
+
+// Recommend Diets that benefit diseases and are not incompatible with medications
+MATCH (d)-[:HAS_DIET|BENEFITS]->(diet:Diet)
+WHERE NOT EXISTS { MATCH (diet)-[:RESTRICTS]->(m) }
+RETURN DISTINCT doc.name AS DoctorName, doc.specialty AS Specialty, doc.contactInfo AS ContactInfo, doc.hospital AS Hospital, diet.name AS DietName, diet.description AS Description;
+
+/* To find diets recommended for diseases that a specific patient (e.g., patient with ID 3) has: */
+
+MATCH (p:Patients {ID: 3})-[:Has_disease]->(:Diseases)-[:Has_Diet]->(d:Diet)
+RETURN d;
+
+/* To find doctors who can treat diseases that a specific patient (e.g., patient with ID 3) has: */
+
+MATCH (p:Patients)-[:Has_disease]->(:Diseases)<-[:Treats]-(d:Doctors)
+WHERE p.ID = 3
+RETURN d;
+
+MATCH (p:Patients {id: 3})-[:Has_disease]->(d:Diseases)-[:Has_Diet]->(diet:Diet)
+RETURN DISTINCT diet.name AS DietName, diet.Description AS Description;
+
+MATCH (p:Patients {id: 3})-[:Has_disease]->(d:Diseases)-[:Has_Diet]->(diet:Diet)
+RETURN DISTINCT diet.name AS DietName, diet.description AS Description;
+
+/* one has chestpain idenfity the disease and a a doctor who he can he visit for the specilised  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chestpain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(pat:Patients)
+MATCH (doc:Doctors)-[:SpecializedIn]->(d)
+RETURN d, doc;
+
+/* one has chestpain idenfity the disease and a a doctor who he can he visit for the specilised  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chestpain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(pat:Patients)
+MATCH (doc:Doctors)-[:SpecialisesIN]->(d)
+RETURN d, doc;
+
+/* one has chestpain idenfity the disease and a a doctor who he can he visit for the specilised  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(s:Symptoms {Name: "Chestpain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(pat:Patients)
+MATCH (doc:Doctors)-[:SpecialisedIn]->(d)
+RETURN d, doc;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:SpecializedIn]-(doc:Doctors)
+RETURN disease.Name AS Disease, doc.Name;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:SpecializedIn]-(doc:DoctorsDoctors)
+RETURN disease.Name AS Disease, doc.Name;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+RETURN disease.Name AS Disease;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+MATCH (doctor:Doctors)-[:SpecializedIn]->(disease)
+RETURN disease.Name AS Disease, doctor.Name AS Doctor;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+MATCH (doctor:Doctors)-[:SpecializedIn]->(disease)
+RETURN disease.Name AS Disease, doctor.Name AS Doctor;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "chest pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+MATCH (doctor:Doctors)-[:SpecialisesIN]->(disease)
+RETURN disease.Name AS Disease, doctor.Name AS Doctor;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "chest pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+MATCH (doctor:Doctors)-[:SpecialisesIN]->(disease)
+RETURN disease.Name AS Disease, doctor.Name AS Doctor;
+
+/* if a person has symptom of chest pain which disease is it and which doctor to visit */
+
+MATCH (:Symptoms{Name: "chest pain"})-[:Has_Symptoms]->(disease:Diseases)<-[:Has_disease]-(patient:Patients)
+MATCH (doctor:Doctors)-[:SpecialisedIn]->(disease)
+RETURN disease.Name AS Disease, doctor.Name AS Doctor;
+
+/* if one has hypertension which doctor to vist */
+
+MATCH (d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Hypertension"})
+RETURN d;
+
+/* if one has chest pain idenigfy which disaese he might have and which specilsed docor can he visit */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (d)<-[:SpecialisesIN]-(doc:Doctors)
+RETURN d.Name AS Possible_Disease, doc.Name AS Specialized_Doctor, doc.Specialty;
+
+/* if one has hypertension which doctor to vist */
+
+MATCH (d:Doctors)-[:SpecialisesIN]->(:Diseases{Name: "Hypertension"})
+RETURN d;
+
+/* if one has chest pain idenigfy which disaese he might have and which specilsed docor can he visit */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (d)<-[:SpecialisesIN]-(doc:Doctors)
+RETURN d.Name AS Possible_Disease, doc.Name AS Specialized_Doctor, doc.Specialty;
+
+/* if one has chest pain idenigfy which disaese he might have and which specilsed docor can he visit */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p:Patients)
+MATCH (d)<-[:SpecialisesIN]-(doc:Doctors)
+RETURN d.Name AS Possible_Disease, doc.Name AS Specialized_Doctor;
+
+/* if one has symptom as chest pain identify disease and recommend a diet  */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)-[:Has_Diet]->(diet:Diet)
+RETURN d, diet;
+
+/* if one has symptom as chest pain identify disease and recommend a diet  */
+
+MATCH (s:Symptoms {Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)-[:Has_Diet]->(diet:Diet)
+RETURN d, diet;
+
+/* if a patient has chest pain identify disease and recomend a diet  */
+
+MATCH (p:Patients)-[:Has_disease]->(:Diseases)-[:Has_Symptoms]->(s:Symptoms)
+WHERE p.Name = "John" AND s.Name = "Chest Pain"
+MATCH (disease:Diseases)-[:Has_Diet]->(diet:Diet)
+RETURN disease, diet;
+
+/* if a patient has chest pain what disease he might have */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p)-[:Treats]->(doc:Doctors)
+RETURN doc.Name;
+
+/* if a person has chest pain which disease he might have and which doctor he should visit */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)<-[:Has_disease]-(p)-[:Treats]->(doc:Doctors)
+RETURN d.Name AS Possible_Disease, doc.Name AS Recommended_Doctor;
+
+/* if a patient has chest pain what disease he might have */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(d:Diseases)
+RETURN d;
+
+MATCH p=()-[:SpecialisesIN]->() RETURN p LIMIT 25;
+
+MATCH p=()-[:SpecialisesIN]->() RETURN p LIMIT 25;
+
+MATCH p=()-[:SpecialisesIN]->() RETURN p LIMIT 25;
+
+/* if a person has chestpain which doctor to visit */
+
+MATCH (:Symptoms{Name: "chestpain"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)
+RETURN doc;
+
+/* if a person has chestpain which doctor to visit */
+
+MATCH (:Symptoms{Name: "chestpain"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)
+RETURN doc;
+
+/* if a person has chestpain which doctor to visit */
+
+MATCH (:Symptoms{Name: "chestpain"})-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)
+RETURN doc;
+
+/* recommend doctors based on disease */
+
+MATCH (d:Doctors)-[:SpecialisesIN]->(:Diseases {Name: "DiseaseName"})
+RETURN d.Name, d.Specialty, d.Location;
+
+ases {Name: "DiseaseName"})
+RETURN d.Name, d.Specialty, d.Hospital, d.Location;
+
+/* recommend doctors based on disease */
+
+MATCH (d:Doctors)-[:SpecialisesIN]->(:Dise;
+
+MATCH p=()-[:Has_Diet]->() RETURN p LIMIT 25;
+
+MATCH p=()-[:Treats]->() RETURN p LIMIT 25;
+
+/* which doctor to visit if has a stroke  */
+
+MATCH (d:Doctors)-[r:Treats]->(dis:Diseases)
+WHERE dis.Name = 'Stroke'
+RETURN d.Name, d.Specialty, d.Hospital, d.Location;
+
+/* which doctor to visit if has a stroke  */
+
+MATCH (d:Doctors)-[r:Treats]->(dis:Diseases)
+WHERE dis.Name = 'Stroke'
+RETURN d.Name, d.Specialty, d.Hospital, d.Location;
+
+/* which doctor to visit if has a stroke  */
+
+MATCH (d:Doctors)-[r:Treats]->(dis:Diseases)
+WHERE dis.Name = 'Stroke'
+RETURN d.Name, d.Specialty, d.Hospital, d.Location;
+
+/* if a person has stroke which doctor to visit  */
+
+MATCH (:Diseases{Name: "Stroke"})<-[:Has_disease]-[:Treats]->(d:Doctors)
+RETURN d;
+
+/* if a person has stroke which doctor to visit  */
+
+MATCH (:Diseases{Name: "Stroke"})<-[:Has_disease]-(p:Patients)-[:Treats]->(d:Doctors)
+RETURN d;
+
+/* if a person has stroke which doctor to visit  */
+
+MATCH (:Diseases{Name: "Stroke"})<-[:Has_disease]-(p:Patients)-[:Treats]->(d:Doctors)
+RETURN d;
+
+/* if a person has stroke which doctor to visit  */
+
+MATCH (:Diseases{Name: "Stroke"})<-[:Has_disease]-(p:Patients)-[:Treats]->(d:Doctors)
+RETURN d;
+
+/* if a person has storke disease recommand a diet */
+
+MATCH (:Diseases{Name: "Stroke"})-[:Has_Diet]->(diet:Diet)
+RETURN diet;
+
+/* if a person has chest pain recommand a diet  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})-[:Has_disease]->(:Diseases)-[:Has_Diet]->(d:Diet)
+RETURN d;
+
+/* if a person has chest pain recommand a diet  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})-[:Has_Disease]->(:Diseases)-[:Has_Diet]->(d:Diet)
+RETURN d;
+
+/* if a person has chest pain recommand a diet  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms{Name: "Chest Pain"})-[:Has_Disease]->(:Diseases)-[:Has_Diet]->(d:Diet)
+RETURN d;
+
+/* if a person has chest pain what disease he might have */
+
+MATCH (:Symptoms{Name: "Chest Pain"})-[:Has_Symptoms]->(disease:Diseases)
+RETURN disease;
+
+MATCH p=()-[:Treats]->() RETURN p LIMIT 25;
+
+MATCH (n:Doctors) RETURN n LIMIT 25;
+
+MATCH (n:Symptoms) RETURN n LIMIT 25;
+
+/* match symptoms to disease and disease to doctor  */
+
+MATCH (s:Symptoms)-[:Has_Symptoms]->(d:Diseases)
+MATCH (d)-[:Treats]->(doc:Doctors)
+RETURN s, d, doc;
+
+/* based on symptoms recommend whcich disease they have and doctor who treats it  */
+
+MATCH (p:Patients)-[:Has_Symptoms]->(:Symptoms)-[:Has_Symptoms]->(d:Diseases)<-[:Treats]-(doc:Doctors)
+WHERE p.Name = "Patient's Name"
+RETURN d.Name AS Recommended_Disease, doc.Name AS Recommended_Doctor;
